@@ -29,7 +29,7 @@ def main():
         compare_a_dict = compare_b_dict
         compare_b_dict = random_dict_item()
         while compare_a_dict == compare_b_dict:
-            compare_b_dict = random_dict_item
+            compare_b_dict = random_dict_item()
 
         print(f"Compare A: {compare_a_dict['name']}, a {compare_a_dict['description']} from {compare_a_dict['country']}")
         print(vs)
