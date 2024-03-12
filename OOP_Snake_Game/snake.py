@@ -11,15 +11,7 @@ class Snake():
     def __init__(self):
         self.snake_list= []
         #creates starting point snake with 3 segments
-        starting_x_axis = 0
-        for i in range(1,4):
-            i = Turtle(shape="square")
-            i.color("white")
-            i.penup()
-            self.snake_list.append(i)
-            i.setx(starting_x_axis)
-            starting_x_axis+= -20
-        
+        self.create_snake()
         self.head = self.snake_list[0]
 
     def move(self):
@@ -30,12 +22,30 @@ class Snake():
             self.snake_list[seg_num].goto(new_x, new_y)
         self.head.fd(MOVE_DISTANCE)
 
+    def create_snake(self):
+        starting_x_axis = 0
+        for i in range(1,4):
+            i = Turtle(shape="square")
+            i.color("white")
+            i.penup()
+            self.snake_list.append(i)
+            i.setx(starting_x_axis)
+            starting_x_axis+= -20
+
     def add_segment(self, position):
         i = Turtle(shape="square")
         i.color("white")
         i.penup()
         i.goto(position)
         self.snake_list.append(i)
+
+    def reset(self):
+        for segment in self.snake_list:
+            segment.goto(1000,1000)
+        self.snake_list.clear()
+        self.create_snake()
+        self.head = self.snake_list[0]
+
 
     def extend(self):
         self.add_segment(self.snake_list[-1].position())
@@ -53,5 +63,6 @@ class Snake():
     def right(self):
         if self.head.heading()!=LEFT:
             self.head.setheading(RIGHT)
+
 
     
