@@ -26,11 +26,12 @@ score = 0
 
 while len(statemanager.guess_list["state"]) < 50:
     if answer_state == "Exit":
-        missing_states = []
-        for state in state_series:
-            if state not in statemanager.guess_list["state"]:
-                missing_states.append(state)
-
+        # missing_states = []
+        # for state in state_series:
+        #     if state not in statemanager.guess_list["state"]:
+        #         missing_states.append(state)
+        """list comprehension"""
+        missing_states = [state for state in state_series if state not in statemanager.guess_list["state"]]
         new_df = pandas.DataFrame(missing_states)
         new_df.to_csv("states_to_learn.csv")
         break
