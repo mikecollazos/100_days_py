@@ -1,5 +1,4 @@
 import requests
-import json
 
 parameters= {
     "amount":10,
