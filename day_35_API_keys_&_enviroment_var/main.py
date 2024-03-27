@@ -1,5 +1,5 @@
 import requests
-
+import os
 
 # MY_LAT = 40.825661
 # MY_LONG = -74.108521
@@ -8,9 +8,10 @@ MY_LAT = 35.149532
 MY_LONG = -90.048981
 
 """telegram bot"""
-bot_token = "7102044194:AAGjePlQazu7gbot1XxILcIhEi6ZP9eDPoo"
+bot_token = os.environ.get("bot_token")
 bot_name = "nattekbot"
-bot_chatID = '6840675274'
+bot_chatID = os.environ.get("bot_chatID")
+
 
 def telegram_bot_sendtext(bot_message):
     send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
@@ -18,7 +19,7 @@ def telegram_bot_sendtext(bot_message):
     return response.json()
 
 """Weather data API KEY"""
-api_key = "c89087696cfb81dd7844092cae6570a9"
+api_key = os.environ.get("weather_api_key")
 
 parameters = {
     "lat": MY_LAT,
