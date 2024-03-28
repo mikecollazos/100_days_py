@@ -64,7 +64,7 @@ day_before_price = float(list(stock_data.items())[2][1]['4. close'])
 price_diff = yesterday_price - day_before_price
 
 
-percent_change = round((price_diff / yesterday_price) * 100)
+percent_change = round(((price_diff / yesterday_price) * 100), 2)
 if percent_change > 0:
     up_down = "🔺"
 else:
@@ -92,7 +92,7 @@ def news_data_api():
 
 
 # Check if stock perct changed by more than 1%
-if abs(percent_change) > 3:
+if abs(percent_change) > 2:
     news_data = news_data_api()
     news_list = [f"{STOCK_NAME}: {up_down}{percent_change}%\nHeadline: {i['title']}. \nBrief: {i['description']}" for i in news_data]
     for article in news_list:
