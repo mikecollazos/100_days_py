@@ -33,5 +33,5 @@ search.send_keys("Python", Keys.ENTER)
 
 
 
-#driver.quit()
+driver.quit()
 
